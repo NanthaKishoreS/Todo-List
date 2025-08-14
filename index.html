@@ -1,12 +1,55 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Todo List</title>
+    <title>Todo-List</title>
   </head>
   <body>
-    <p>Todo List</p>
-    <input class="js-input" placeholder="Todo Name">
-    <button onclick="addTodo()">Add</button>
-    <div class="js-todoList"></div>
-    <script src="main.js"></script>
+
+    <p>Todo-List</p>
+    <input placeholder="Todo Name" class="js-input">
+    <button onclick="
+      addTodo(); 
+    ">Add</button>
+    <div class="js-container">
+      text
+    </div>
+
+    <script>
+      const todolist = ['make dinner', 'wash dishes'];
+
+      renderTodoList();
+
+      function renderTodoList(){
+        let todoListHTML = '';
+
+        for(let i=0;i<todolist.length;i++){
+          const todo = todolist[i];
+          const html = `
+          <p>
+            ${todo} 
+            <button onclick="
+             todoList.splice(${i},1);
+             renderTodoList();
+            ">Delete</button>
+          </p>`;
+          todoListHTML += html;
+          
+        }
+        console.log(todoListHTML);
+
+        document.querySelector('.js-container').innerHTML = todoListHTML;
+      }
+
+      function addTodo(){
+        const inputElem = document.querySelector('.js-input');
+        const name = inputElem.value;
+        todolist.push(name);
+        console.log(todolist);
+
+        inputElem.value = '';
+
+        renderTodoList();
+      }
+    </script>
   </body>
 </html>

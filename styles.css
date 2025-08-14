@@ -1,0 +1,41 @@
+body{
+    font-family: arial;
+}
+.input-box,
+.date-select-box,
+.delete-button{
+    padding: 6px;
+    font-size: 14px;
+}
+.todo-grid,
+.todo-input-grid{
+    display: grid;
+    grid-template-columns: 200px 150px 100px;
+    column-gap: 10px;
+    row-gap: 10px;
+    align-items: center;
+}
+.todo-input-grid{
+    margin-bottom: 10px;
+    align-items: stretch;
+}
+.add-button{
+    background-color: rgb(0, 122, 0);
+    border: none;
+    color: white;
+    transition: 0.75s;
+}
+.add-button:hover,
+.delete-button:hover{
+    opacity: 0.8;
+}
+.add-button:active,
+.delete-button:active{
+    opacity: 0.6;
+}
+.delete-button{
+    background-color: rgb(226, 0, 0);
+    border: none;
+    color: white;
+}
+

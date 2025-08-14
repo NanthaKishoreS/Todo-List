@@ -7,6 +7,7 @@
 
     <p>Todo-List</p>
     <input placeholder="Todo Name" class="js-input">
+    <input class="js-date" type="date">
     <button onclick="
       addTodo(); 
     ">Add</button>
@@ -15,7 +16,10 @@
     </div>
 
     <script>
-      const todolist = ['make dinner', 'wash dishes'];
+      const todolist = [{
+        name:'make dinner',
+        dueDate: '2022-12-22'
+       },{name: 'wash dishes',dueDate:'2022-12-22'}];
 
       renderTodoList();
 
@@ -23,12 +27,14 @@
         let todoListHTML = '';
 
         for(let i=0;i<todolist.length;i++){
-          const todo = todolist[i];
+          const todoObj = todolist[i];
+          const name = todoObj.name;
+          const dueDate = todoObj.dueDate;
           const html = `
           <p>
-            ${todo} 
+            ${name}${dueDate} 
             <button onclick="
-             todoList.splice(${i},1);
+             todolist.splice(${i},1);
              renderTodoList();
             ">Delete</button>
           </p>`;
@@ -42,8 +48,10 @@
 
       function addTodo(){
         const inputElem = document.querySelector('.js-input');
+        const inputDate = document.querySelector('js-date');
         const name = inputElem.value;
-        todolist.push(name);
+        const date = inputDate.value;
+        todolist.push({name:name,dueDate:date});
         console.log(todolist);
 
         inputElem.value = '';
